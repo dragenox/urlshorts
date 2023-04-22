@@ -6,10 +6,8 @@ const express = require('express')
 // initiate express app
 const app = express()
 
-// database config
-const connection = require('./config/database')
-connection.once('open', ()=>{console.log('Database Connected')})
-connection.on('error', ()=>{console.log('Database Connection Error')})
+// connect db
+require('./database/connect').connect()
 
 // routes
 app.use('/', (req, res) => {

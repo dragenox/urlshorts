@@ -7,7 +7,7 @@ const shortId = require('shortid')
 const router = express.Router()
 
 // import URL database schema
-const Url = require('../schema/urlSchema')
+const Url = require('../database/UrlSchema')
 
 // @route POST /api/url/shortner
 // @description Create short url
