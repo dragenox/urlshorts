@@ -1,3 +1,5 @@
+// dotenv import
+require('dotenv').config()
 // import express package (commonJS)
 const express = require('express')
 
@@ -5,9 +7,9 @@ const express = require('express')
 const app = express()
 
 // database config
-// const connection = require('./config/database')
-// connection.once('open', ()=>{console.log('Database Connected')})
-// connection.on('error', ()=>{console.log('Database Connection Error')})
+const connection = require('./config/database')
+connection.once('open', ()=>{console.log('Database Connected')})
+connection.on('error', ()=>{console.log('Database Connection Error')})
 
 // routes
 app.use('/', (req, res) => {

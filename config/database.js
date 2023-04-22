@@ -1,11 +1,13 @@
+// dotenv import
+require('dotenv').config()
 // import mongoose package (commonJS)
 const mongoose = require('mongoose')
 
 // declare database string
-const url = 'mongodb'
+const MONGODB_URL = process.env.MONGODB_URL
 
 // connect to database
-mongoose.connect(url, {
+mongoose.connect(MONGODB_URL, {
     useNewUrlParser: true,
     useUnifiedTopology: true
 })
