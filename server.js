@@ -21,8 +21,9 @@ app.use('/', (req, res) => {
 const Url = require('./database/TestSchema')
 
 // post
-app.post('/', async (req, res)=>{
+app.post('/', async (req, res, next)=>{
     var inputUrl = req.body.url.trim()
+    console.log(inputUrl)
     if (inputUrl){
         var url = await Url.findOne({
             $or: [
