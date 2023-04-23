@@ -9,9 +9,18 @@ const app = express()
 // connect db
 require('./database/connect').connect()
 
+// static path
+app.use(express.static('public'));
+
 // routes
 app.use('/', (req, res) => {
     res.sendFile('index.html', {root: 'public'})
+})
+
+// post
+app.post('/shorten',(req, res)=>{
+    console.log(req.body.inputUrl)
+    alert(req.body.inputUrl)
 })
 
 // listen for requests
