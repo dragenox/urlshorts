@@ -7,7 +7,7 @@ const express = require('express')
 const app = express()
 
 // connect db
-require('./database/connect').connect()
+require('./database/database').connect()
 
 // static path
 app.use(express.static('public'));
@@ -17,10 +17,20 @@ app.use('/', (req, res) => {
     res.sendFile('index.html', {root: 'public'})
 })
 
+// Schemas
+const Url = require('./database/TestSchema')
+
 // post
-app.post('/shorten',(req, res)=>{
-    console.log(req.body.inputUrl)
-    alert(req.body.inputUrl)
+app.post('/', async (req, res)=>{
+    var inputUrl = req.body.url.trim()
+    if (inputUrl){
+        var url = await Url.findOne({
+            $or: [
+                {url: url}
+            ]
+        })
+        console.log(url)
+    }
 })
 
 // listen for requests

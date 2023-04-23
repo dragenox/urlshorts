@@ -1,4 +1,20 @@
-async function createListing(client, newListing){
-    const result = await client.db("sample_airbnb").collection("listingsAndReviews").insertOne(newListing);
-    console.log(`New listing created with the following id: ${result.insertedId}`);
+// dotenv import
+require('dotenv').config()
+// import mongoose package (commonJS)
+const mongoose = require('mongoose')
+// mongoose.set('useNewUrlParser', true)
+// mongoose.set('useUnifiedTopology', true)
+
+// export connect function
+exports.connect = () => {
+    // connect to database
+    mongoose.connect(process.env.MONGODB_URL)
+        .then(() => {
+            console.log('Database Connected')
+        })
+        .catch((err) => {
+            console.log('Database Connection Failed!')
+            console.error(err)
+            process.exit(1)
+        })
 }
